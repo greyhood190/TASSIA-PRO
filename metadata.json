@@ -1,0 +1,6 @@
+{
+  "name": "Tassia Tournament Portal",
+  "description": "Grassroots football tournament management and fan engagement portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

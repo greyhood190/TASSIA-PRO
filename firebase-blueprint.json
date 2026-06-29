@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile inside the sports portal",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the user (matching their Auth UID)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the user"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user"
+        },
+        "role": {
+          "type": "string",
+          "description": "User role in the tournament system"
+        },
+        "isVerified": {
+          "type": "boolean",
+          "description": "Whether the user's email has been verified"
+        },
+        "passwordHash": {
+          "type": "string",
+          "description": "Hashed password of the user (for client-side/custom simulation authentication)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the user profile was created"
+        }
+      },
+      "required": ["id", "name", "email", "role", "isVerified", "passwordHash", "createdAt"]
+    },
+    "AppState": {
+      "title": "AppState",
+      "description": "The entire database state representing tournaments, matches, teams, fixtures, and news",
+      "type": "object",
+      "properties": {
+        "tournaments": {
+          "type": "array",
+          "description": "List of sports tournaments"
+        },
+        "teams": {
+          "type": "array",
+          "description": "List of soccer/sports teams"
+        },
+        "players": {
+          "type": "array",
+          "description": "List of players"
+        },
+        "matches": {
+          "type": "array",
+          "description": "List of matches and matches' logs"
+        },
+        "news": {
+          "type": "array",
+          "description": "List of news posts"
+        },
+        "polls": {
+          "type": "array",
+          "description": "List of fan interactive polls"
+        },
+        "notifications": {
+          "type": "array",
+          "description": "System-wide and group-wide notifications"
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores individual user profile credentials and roles"
+    },
+    "/app_state/{stateId}": {
+      "schema": "AppState",
+      "description": "Stores the synchronized sports tournament database state"
+    }
+  }
+}
